@@ -1,0 +1,22 @@
+{"StaticQueryTemplate": [
+  	{   "reportID":"DTMS-PD831Q01",
+  	    "description": "description111",
+  	    "StaticQueryParameter": [ 
+        	{"type":"estate", "name":["estCode"], "label":["Estate Code"], "isCompulsory":"Y", "data":[""]},
+        	{"type":"block", "name":["blkCode"], "label":["Block Code"], "isCompulsory":"Y", "data":[""]},
+        	{"type":"list", "name":["testList"], "label":["Test List"], "isCompulsory":"N", "data":["data1", "data2", "data2"]},
+        	{"type":"date", "name":["startDate", "endDate"], "label":["From", "To"], "isCompulsory":"N", "data":[""]},
+        	{"type":"text", "name":["desc"], "label":["description"], "isCompulsory":"N", "data":["description"]}
+        ]
+  	},
+ 	{   "reportID":"DTMS-PD832Q01",
+ 	    "description": "description222",
+ 	    "StaticQueryParameter": [ 
+        	{"type":"estate", "name":["estCode"], "label":["Estate Code"], "isCompulsory":"Y", "data":[""]},
+        	{"type":"block", "name":["blkCode"], "label":["Block Code"], "isCompulsory":"Y", "data":[""]},
+        	{"type":"list", "name":["testList"], "label":["Test List"], "isCompulsory":"N", "data":["data1", "data2", "data2"]},
+        	{"type":"date", "name":["startDate", "endDate"], "label":["From", "To"], "isCompulsory":"N", "data":[""]},
+        	{"type":"text", "name":["desc"], "label":["description"], "isCompulsory":"N", "data":["description"]}
+        ]
+ 	}
+]}
