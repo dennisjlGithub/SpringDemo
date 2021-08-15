@@ -2,17 +2,13 @@ package com.test.web.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.StandardCharsets;
 import java.util.Base64;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -23,10 +19,6 @@ import org.springframework.web.client.RestTemplate;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
-import com.google.gson.Gson;
-import com.test.bean.StaticQueryParameter;
-import com.test.bean.StaticQueryReport;
-import com.test.bean.StaticQueryTemplate;
 import com.test.util.FileIO;
 import com.test.util.LoadProperties;
 
@@ -57,29 +49,6 @@ public class OnlineRestController {
 		s += "<p>jdbc.user = " + loadProperties.getProperty("jdbc.user");
 		s += "<p>page.title = " + loadProperties.getProperty("page.title");
 		return s;
-	}
-
-	@RequestMapping("/loadStaticQueryReport")
-	public String loadStaticQueryReport() throws Exception {
-		ClassPathResource classPathResource = new ClassPathResource("StaticQueryReport.txt");
-		InputStream input = classPathResource.getInputStream();
-		byte[] reportTemplate = input.readAllBytes();
-		input.close();
-		String reportTemplateStr = new String(reportTemplate, StandardCharsets.UTF_8);
-
-		Object obj = new Gson().fromJson(reportTemplateStr, Object.class);
-		System.out.println(obj);
-
-		StaticQueryReport sqr = new Gson().fromJson(reportTemplateStr, StaticQueryReport.class);
-		List<StaticQueryTemplate> templates = sqr.getStaticQueryTemplate();
-		for (StaticQueryTemplate staticQueryTemplate : templates) {
-			System.out.println("StaticQueryTemplate: " + staticQueryTemplate.getReportID() + ":" + staticQueryTemplate.getDescription());
-			List<StaticQueryParameter> params = staticQueryTemplate.getStaticQueryParameter();
-			for (StaticQueryParameter param : params) {
-				System.out.println("    StaticQueryParameter: " + param.getName() + ":" + param.getLabel());
-			}
-		}
-		return "Success";
 	}
 
 	@RequestMapping("/testFileIO")

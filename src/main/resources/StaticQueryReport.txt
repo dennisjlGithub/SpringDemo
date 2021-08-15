@@ -1,7 +1,7 @@
-{"StaticQueryTemplate": [
+{"staticQueryTemplate": [
   	{   "reportID":"DTMS-PD831Q01",
   	    "description": "description111",
-  	    "StaticQueryParameter": [ 
+  	    "staticQueryParameter": [ 
         	{"type":"estate", "name":["estCode"], "label":["Estate Code"], "isCompulsory":"Y", "data":[""]},
         	{"type":"block", "name":["blkCode"], "label":["Block Code"], "isCompulsory":"Y", "data":[""]},
         	{"type":"list", "name":["testList"], "label":["Test List"], "isCompulsory":"N", "data":["data1", "data2", "data2"]},
@@ -11,7 +11,7 @@
   	},
  	{   "reportID":"DTMS-PD832Q01",
  	    "description": "description222",
- 	    "StaticQueryParameter": [ 
+ 	    "staticQueryParameter": [ 
         	{"type":"estate", "name":["estCode"], "label":["Estate Code"], "isCompulsory":"Y", "data":[""]},
         	{"type":"block", "name":["blkCode"], "label":["Block Code"], "isCompulsory":"Y", "data":[""]},
         	{"type":"list", "name":["testList"], "label":["Test List"], "isCompulsory":"N", "data":["data1", "data2", "data2"]},

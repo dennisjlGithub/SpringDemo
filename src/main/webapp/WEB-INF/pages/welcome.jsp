@@ -82,6 +82,8 @@ Webservice:
 
 <p>
 ========================================
+<p>
+Load Static Query Report: <a href="http://localhost:8080/tm/OnlineController/loadStaticQueryReport" target="_blank">Open</a>
 
 </body>
 

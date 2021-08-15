@@ -1,7 +1,8 @@
 package com.test.web.form;
 
-import java.util.List;
 import java.util.Map;
+
+import com.test.bean.StaticQueryReport;
 
 public class OnlineForm {
 
@@ -12,6 +13,8 @@ public class OnlineForm {
 	private String city;
 	
 	private String inputText;
+	
+	private StaticQueryReport staticQueryReport;
 	
 	//Single checkbox
 	private boolean checkbox1 = true;
@@ -99,6 +102,12 @@ public class OnlineForm {
 	}
 	public void setFavoriteBooks(String[] favoriteBooks) {
 		this.favoriteBooks = favoriteBooks;
+	}
+	public StaticQueryReport getStaticQueryReport() {
+		return staticQueryReport;
+	}
+	public void setStaticQueryReport(StaticQueryReport staticQueryReport) {
+		this.staticQueryReport = staticQueryReport;
 	}
 	
 }

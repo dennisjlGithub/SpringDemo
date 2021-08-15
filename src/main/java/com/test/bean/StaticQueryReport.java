@@ -4,14 +4,14 @@ import java.util.List;
 
 public class StaticQueryReport {
 
-	private List<StaticQueryTemplate> StaticQueryTemplate;
-
-	public void setStaticQueryTemplate(List<StaticQueryTemplate> StaticQueryTemplate) {
-		this.StaticQueryTemplate = StaticQueryTemplate;
-	}
+	private List<StaticQueryTemplate> staticQueryTemplate;
 
 	public List<StaticQueryTemplate> getStaticQueryTemplate() {
-		return StaticQueryTemplate;
+		return staticQueryTemplate;
+	}
+
+	public void setStaticQueryTemplate(List<StaticQueryTemplate> staticQueryTemplate) {
+		this.staticQueryTemplate = staticQueryTemplate;
 	}
 
 }

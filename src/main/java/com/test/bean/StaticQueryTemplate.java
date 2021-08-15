@@ -6,7 +6,7 @@ public class StaticQueryTemplate {
 
 	private String reportID;
 	private String description;
-	private List<StaticQueryParameter> StaticQueryParameter;
+	private List<StaticQueryParameter> staticQueryParameter;
 
 	public String getReportID() {
 		return reportID;
@@ -25,11 +25,11 @@ public class StaticQueryTemplate {
 	}
 
 	public List<StaticQueryParameter> getStaticQueryParameter() {
-		return StaticQueryParameter;
+		return staticQueryParameter;
 	}
 
 	public void setStaticQueryParameter(List<StaticQueryParameter> staticQueryParameter) {
-		StaticQueryParameter = staticQueryParameter;
+		this.staticQueryParameter = staticQueryParameter;
 	}
 
 }
