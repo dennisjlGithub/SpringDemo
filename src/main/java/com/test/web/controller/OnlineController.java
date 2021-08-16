@@ -28,7 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.test.bean.StaticQueryReport;
 import com.test.web.form.OnlineForm;
 
@@ -156,9 +156,8 @@ public class OnlineController {
 		byte[] reportTemplate = input.readAllBytes();
 		input.close();
 		String reportTemplateStr = new String(reportTemplate, StandardCharsets.UTF_8);
-
-		Object obj = new Gson().fromJson(reportTemplateStr, Object.class);
-		onlineForm.setStaticQueryReport(new Gson().fromJson(reportTemplateStr, StaticQueryReport.class));
+		
+		onlineForm.setStaticQueryReport(new ObjectMapper().readValue(reportTemplateStr, StaticQueryReport.class));
 		return "staticQueryReport";
 	}
 }
