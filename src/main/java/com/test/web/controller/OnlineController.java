@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
@@ -65,7 +66,7 @@ public class OnlineController {
 	}
 
 	@RequestMapping("/start")
-	public String start(@ModelAttribute("onlineForm") OnlineForm onlineForm, HttpServletRequest request)
+	public String start(@ModelAttribute("onlineForm") OnlineForm onlineForm, HttpServletRequest request, SessionStatus status)
 			throws Exception {
 		// Json Data
 		JSONObject jsonObj = new JSONObject();
@@ -89,15 +90,32 @@ public class OnlineController {
 		String[] books = new String[] { "JAVA", "NET", "PYTHON", "Spring Framework" };
 		request.setAttribute("books", books);
 		onlineForm.setFavoriteBooks(new String[] { "JAVA", "NET" });
-
+		
 		return "welcome";
 	}
 
 	@RequestMapping("/toSubmit")
-	public String submit(@ModelAttribute("onlineForm") OnlineForm onlineForm, HttpServletRequest request)
+	public String submit(@ModelAttribute("onlineForm") OnlineForm onlineForm, HttpServletRequest request, SessionStatus status)
 			throws Exception {
-
+		
+		OnlineForm onlineFormSession1 = (OnlineForm) request.getSession().getAttribute("onlineForm");
+		
+		request.getSession().setAttribute("onlineForm", new OnlineForm());
+		status.setComplete();	// clear @SessionAttributes
+		onlineForm.setCity("SH"); // don't work.
+		
+		OnlineForm onlineFormSession2 = (OnlineForm) request.getSession().getAttribute("onlineForm");
+		
 		return "submit";
+	}
+	
+	@RequestMapping("/resetForm")
+	public String resetForm(@ModelAttribute("onlineForm") OnlineForm onlineForm, HttpServletRequest request, SessionStatus status)
+			throws Exception {
+		
+		onlineForm.setCity("GZ"); // work
+		
+		return "redirect:/OnlineController/start";
 	}
 
 	@PostMapping("/fileUpload")

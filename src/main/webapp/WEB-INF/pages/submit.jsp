@@ -22,6 +22,12 @@ Favorite Books:
     [<c:out value="${book}" />]
 </c:forEach>
 
+<form:form method="POST" name="testSubmit" action="resetForm" modelAttribute="onlineForm">
+<br/>
+<input type="submit" value="Back"/>
+
+</form:form>
+
 </body>
 
 <%@ include file="include/footer.jsp" %>
