@@ -14,6 +14,8 @@ public class OnlineForm {
 	
 	private String inputText;
 	
+	private String gender;
+	
 	private StaticQueryReport staticQueryReport;
 	
 	//Single checkbox
@@ -108,6 +110,12 @@ public class OnlineForm {
 	}
 	public void setStaticQueryReport(StaticQueryReport staticQueryReport) {
 		this.staticQueryReport = staticQueryReport;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
 	}
 	
 }

@@ -21,6 +21,8 @@ Favorite Books:
 <c:forEach items="${onlineForm.favoriteBooks}" var="book">
     [<c:out value="${book}" />]
 </c:forEach>
+<br/><br/>
+Gender: <c:out value="${onlineForm.gender}" />
 
 <form:form method="POST" name="testSubmit" action="resetForm" modelAttribute="onlineForm">
 <br/>

@@ -1,25 +1,5 @@
 <%@ include file="include/header.jsp" %>
 
-<script>
-
-function getJsonData(){
-	$.ajax({
-        type: "POST",
-        url: "http://localhost:8080/tm/JsonController/testJsonparam",
-        contentType: "application/json;charset=utf-8",
-        data:JSON.stringify({"cnName":"test name"}),
-        dataType: "json",
-        success:function (message) {
-        	alert("success: " + message.cnName);
-        },
-        error:function (message) {
-        	alert("failed: " + message);
-        }
-    });
-} 
-
-</script>
-
 <body>
 ${apostrophe1}
 <br/>
@@ -36,7 +16,7 @@ Welcome
 
 <p>
 ========================================
-<form:form method="POST" name="testSubmit" action="toSubmit" modelAttribute="onlineForm">
+<form:form method="POST" name="testForm" id="testForm" action="toSubmit" modelAttribute="onlineForm">
 
 <form:input path="inputText" />
 
@@ -60,11 +40,19 @@ Drop down list:
 <p/>
 <form:checkboxes items="${books}" path="favoriteBooks"/>
 
+<p/>
+Gender:   
+<form:radiobutton path="gender" value="Male"/>Male 
+<form:radiobutton path="gender" value="Female"/>Female
+<br><br>
+
 <p/>=====================<p/>
 <input type="submit" value="Submit"/>
                   
 </form:form>
 
+<button id="toJsonBtn">ToJson</button>
+<span id="jsonFormat"></span>
 <p>
 ========================================
 <form method="POST" action="fileUpload" name="fileUpload" modelAttribute="onlineForm" enctype="multipart/form-data">
@@ -89,3 +77,48 @@ Load Static Query Report: <a href="http://localhost:8080/tm/OnlineController/loa
 
 <%@ include file="include/footer.jsp" %>
 
+<script>
+
+function getJsonData(){
+	$.ajax({
+        type: "POST",
+        url: "http://localhost:8080/tm/JsonController/testJsonparam",
+        contentType: "application/json;charset=utf-8",
+        data:JSON.stringify({"cnName":"test name"}),
+        dataType: "json",
+        success:function (message) {
+        	alert("success: " + message.cnName);
+        },
+        error:function (message) {
+        	alert("failed: " + message);
+        }
+    });
+} 
+
+
+(function($){ //jquery form serialize to Json object
+    $.fn.serializeJson=function(){
+      var serializeObj={};
+      var array=this.serializeArray();
+      var str=this.serialize();
+      $(array).each(function(){
+        if(serializeObj[this.name]){
+          if($.isArray(serializeObj[this.name])){
+            serializeObj[this.name].push(this.value);
+          }else{
+            serializeObj[this.name]=[serializeObj[this.name],this.value];
+          }
+        }else{
+          serializeObj[this.name]=this.value;
+        }
+      });
+      return serializeObj;
+    };
+  })(jQuery);
+  $(document).ready(function(){
+    $("#toJsonBtn").click(function(){
+      var post_data=$("#testForm").serializeJson(); //form serialize.
+      $("#jsonFormat").html(JSON.stringify(post_data));
+    })
+  })
+</script>
