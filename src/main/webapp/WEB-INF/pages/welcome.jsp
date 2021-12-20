@@ -1,17 +1,21 @@
 <%@ include file="include/header.jsp" %>
 
 <body>
+
+H2 console: <a target="_blank" href="http://localhost:8080/tm/h2-console">http://localhost:8080/tm/h2-console</a>
+
+<p>
 ${apostrophe1}
-<br/>
+<br>
 ${apostrophe2}
-<br/>
+<br>
 
 Welcome
-<br/><br/>
+<br><br>
 <button type="button" onclick="getJsonData()">getJson</button> 
-<br/><br/>
+<br><br>
 <button type="button" onclick="window.open('http://localhost:8080/tm/JsonController/downloadFileClientByJson', 'pdf', 'resizable,scrollbars,status')">Print PDF from Local</button>
-<br/><br/>
+<br><br>
 <button type="button" onclick="window.open('http://localhost:8080/tm/JsonController/getByteReport', 'test', 'resizable,scrollbars,status')">Print PDF from Report Server </button>  
 
 <p>
