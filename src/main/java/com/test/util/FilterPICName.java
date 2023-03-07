@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class FilterPICName {
 	private static final String rootPath = "D:\\Temp\\Done\\";
-	private static final String suffix = "*.{jpg,ico}";
+	private static final String suffix = "*.{jpg,ico,gif}";
 
 	public static void main(String[] args) throws IOException {
 		FilterPICName.removeFiles();
@@ -30,7 +30,7 @@ public class FilterPICName {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(dir), suffix)) {
 			for (Path file : stream) {
 				String fileName = file.getParent() + "\\" + file.getFileName();
-				if (fileName.endsWith("ico") || fileName.contains("\\0")) {
+				if (fileName.endsWith("ico") || fileName.endsWith("ico") || fileName.contains("\\0")) {
 					Files.deleteIfExists(Paths.get(fileName));
 				}
 			}
