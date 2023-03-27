@@ -30,7 +30,7 @@ public class FilterPICName {
 		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(dir), suffix)) {
 			for (Path file : stream) {
 				String fileName = file.getParent() + "\\" + file.getFileName();
-				if (fileName.endsWith(".ico") || fileName.endsWith(".gif") || fileName.contains("\\0")) {
+				if (fileName.endsWith(".ico") || fileName.endsWith(".gif") || fileName.endsWith("(1).jpg") || fileName.contains("\\0")) {
 					Files.deleteIfExists(Paths.get(fileName));
 				}
 			}
