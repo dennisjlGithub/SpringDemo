@@ -7,7 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class FilterPICName {
-	private static final String rootPath = "D:\\Temp\\Done\\";
+	private static final String rootPath = "E:\\Done\\";
 	private static final String suffix = "*.{jpg,ico,gif}";
 
 	public static void main(String[] args) throws IOException {
