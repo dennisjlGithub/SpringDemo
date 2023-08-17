@@ -8,13 +8,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class RenameFiles {
-	private static final String rootPath = "D:\\Temp\\Done\\a";
-	private static final String suffix = "*.{jpg,jar,txt,pdf}";
+	private static final String rootPath = "E:\\Done\\test";
+	private static final String suffix = "*.{jpg,jar,txt,pdf,mp4}";
 	
 	public static void main(String[] args) {
 		
 		RenameFiles.listFileNames(rootPath);
-//		RenameFiles.rename1(rootPath);
+		RenameFiles.rename_removeH265(rootPath);
 		
 	}
 	
@@ -45,6 +45,19 @@ public class RenameFiles {
 		    for (Path file: stream) {
 		        File oldFile = new File(file.getParent() + "\\" + file.getFileName());
 		        File newFile = new File(file.getParent() + "\\" + "2020_" + file.getFileName().toString().substring(10, 12) + ".pdf");
+		        oldFile.renameTo(newFile);
+		    }
+		} catch (IOException | DirectoryIteratorException x) {
+		    System.err.println(x);
+		}
+	}
+	
+	public static void rename_removeH265(String filePath) {
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(Path.of(filePath), suffix)) {
+		    for (Path file: stream) {
+		    	String fileName = file.getFileName().toString();
+		        File oldFile = new File(file.getParent() + "\\" + fileName);
+		        File newFile = new File(file.getParent() + "\\" + fileName.replaceAll("_H.265", ""));
 		        oldFile.renameTo(newFile);
 		    }
 		} catch (IOException | DirectoryIteratorException x) {
